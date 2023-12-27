@@ -2,8 +2,8 @@
 
 </script>
 <template>
-  <div class="header">
-    header
+  <div class="canvas">
+    canvas
   </div>
 </template>
 <style lang="scss" scoped>

@@ -73,7 +73,9 @@ export default defineNuxtConfig({
         cookieKey: 'lang'
       }
     }],
+
   ],
+
 
   unocss: {
     uno: false,

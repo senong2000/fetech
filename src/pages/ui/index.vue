@@ -2,8 +2,8 @@
 
 </script>
 <template>
-  <div class="footer">
-    footer
+  <div class="ui">
+    ui
   </div>
 </template>
 <style lang="scss" scoped>
