@@ -30,7 +30,7 @@ export class Canvas2D {
   _initCanvasCallBack = () => { };
 
   protected initCanvas = async () => {
-    await this.countRect();
+    await this.onWindowResize();
     await this.initCanvasListener();
     await this.frameByFrame();
 
@@ -47,13 +47,13 @@ export class Canvas2D {
 
   private initCanvasListener() {
     // 随浏览器窗口大小发生变化
-    document.body.addEventListener("resize", this.onWindowResize);
+    window.addEventListener("resize", this.onWindowResize);
 
   }
 
   private countRect() {
-    let width = this.canvas.offsetWidth;
-    let height = this.canvas.offsetHeight;
+    let width = document.body.clientWidth;
+    let height = document.body.clientHeight;
     if (width != this.WIDTH || height != this.HEIGHT) {
       this.WIDTH = width;
       this.HEIGHT = height;
@@ -62,6 +62,10 @@ export class Canvas2D {
 
   private onWindowResize = () => {
     this.countRect();
+    this.canvas.width = this.WIDTH;
+    this.canvas.height = this.HEIGHT;
+    this.canvas.style.width = this.WIDTH + 'px';
+    this.canvas.style.height = this.HEIGHT + 'px';
   }
 
 
