@@ -28,7 +28,13 @@ onMounted(async () => {
   <div class="home">
     <div id="canvas"></div>
     <div class="name">
-      <span>Senong</span>
+      <div class="text">
+        <div class="main">
+          <div>Senong</div>
+          <div>Fetech</div>
+          <div>坐忘道</div>
+        </div>
+      </div>
     </div>
     <div class="body">
       <div class="css" @click="toPages('/css')">
@@ -140,8 +146,8 @@ onMounted(async () => {
     z-index: 9999;
     pointer-events: none;
 
-    span {
-      position: absolute;
+    .text {
+      position: relative;
       font-size: 5rem;
       border: 1px solid black;
       width: 30rem;
@@ -157,6 +163,36 @@ onMounted(async () => {
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+
+      .main {
+        width: 100%;
+        height: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform-origin: center;
+        /* 变形原点为中心 */
+        transform-style: preserve-3d;
+        /* 保持3D变换 */
+        transform: rotateX(0);
+
+        div {
+          position: absolute;
+          backface-visibility: hidden;
+
+          &:nth-child(1) {
+            transform: rotateX(0deg);
+          }
+
+          &:nth-child(2) {
+            transform: rotateX(120deg);
+          }
+
+          &:nth-child(3) {
+            transform: rotateX(240deg);
+          }
+        }
+      }
     }
 
     &::after {
@@ -235,6 +271,17 @@ onMounted(async () => {
         -ms-user-select: none;
         user-select: none;
       }
+
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        width: 16rem;
+        height: 7rem;
+        z-index: 999;
+        border-style: solid;
+        border-color: black;
+      }
     }
 
     .css {
@@ -246,17 +293,9 @@ onMounted(async () => {
       &:hover {}
 
       &::after {
-        content: "";
-        position: absolute;
-        background-color: white;
-        width: 16rem;
-        height: 7rem;
         right: -1px;
         bottom: -1px;
-        z-index: 999;
         border-width: 1px 0 0 1px;
-        border-style: solid;
-        border-color: black;
         border-top-left-radius: 9999rem;
       }
     }
@@ -269,16 +308,8 @@ onMounted(async () => {
       &:hover {}
 
       &::after {
-        content: "";
-        position: absolute;
-        background-color: white;
-        width: 16rem;
-        height: 7rem;
         left: -1px;
         bottom: -1px;
-        z-index: 999;
-        border-style: solid;
-        border-color: black;
         border-width: 1px 1px 0 0;
         border-top-right-radius: 9999rem;
       }
@@ -296,16 +327,8 @@ onMounted(async () => {
       }
 
       &::after {
-        content: "";
-        position: absolute;
-        background-color: white;
-        width: 16rem;
-        height: 7rem;
         right: -1px;
         top: -1px;
-        z-index: 999;
-        border-style: solid;
-        border-color: black;
         border-width: 0 0 1px 1px;
         border-bottom-left-radius: 9999rem;
       }
@@ -319,16 +342,8 @@ onMounted(async () => {
       &:hover {}
 
       &::after {
-        content: "";
-        position: absolute;
-        background-color: white;
-        width: 16rem;
-        height: 7rem;
         left: -1px;
         top: -1px;
-        z-index: 999;
-        border-style: solid;
-        border-color: black;
         border-width: 0 1px 1px 0;
         border-bottom-right-radius: 9999rem;
       }
