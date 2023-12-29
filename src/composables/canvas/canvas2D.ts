@@ -98,8 +98,10 @@ export class Canvas2D {
     this.frameHandle = 0;
   }
 
-  protected getContext = () => {
-    return
+  /**
+   * @description canvas 重绘
+   */
+  protected rePaint = () => {
+    this.ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
   }
-
 }

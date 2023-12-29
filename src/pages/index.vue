@@ -20,13 +20,16 @@ onMounted(async () => {
   await nextTick();
 
   canvas.value = document.querySelector('#canvas') as HTMLCanvasElement;
-  homeCanvasInit(canvas.value)
+  // homeCanvasInit(canvas.value)
 })
 
 </script>
 <template>
   <div class="home">
     <div id="canvas"></div>
+    <div class="name">
+      <span>Senong</span>
+    </div>
     <div class="body">
       <div class="css" @click="toPages('/css')">
         <div class="icon">
@@ -127,23 +130,67 @@ onMounted(async () => {
     height: 100%;
   }
 
+  .name {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    pointer-events: none;
+
+    span {
+      position: absolute;
+      font-size: 5rem;
+      border: 1px solid black;
+      width: 30rem;
+      height: 12rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 999999rem;
+      background-color: white;
+      pointer-events: all;
+      z-index: 1000;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 33rem;
+      height: 15rem;
+      border-radius: 99999rem;
+      display: block;
+      pointer-events: all;
+    }
+
+  }
+
   .body {
     width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    display: none;
+    flex-shrink: 1;
 
     .css,
     .utils,
     .ui,
     .canvas {
       position: relative;
-      width: 50vw;
+      width: calc(50vw - 1rem);
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      margin: .5rem;
+      border-width: 1px;
+      border-radius: 1rem;
 
       .icon {
         position: absolute;
@@ -191,24 +238,100 @@ onMounted(async () => {
     }
 
     .css {
+      position: relative;
+      // border-width: 0 1px 1px 0;
+      border-style: solid;
+      border-color: black;
 
       &:hover {}
+
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        width: 16rem;
+        height: 7rem;
+        right: -1px;
+        bottom: -1px;
+        z-index: 999;
+        border-width: 1px 0 0 1px;
+        border-style: solid;
+        border-color: black;
+        border-top-left-radius: 9999rem;
+      }
     }
 
     .utils {
+      // border-width: 0 0 1px 1px;
+      border-style: solid;
+      border-color: black;
+
       &:hover {}
+
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        width: 16rem;
+        height: 7rem;
+        left: -1px;
+        bottom: -1px;
+        z-index: 999;
+        border-style: solid;
+        border-color: black;
+        border-width: 1px 1px 0 0;
+        border-top-right-radius: 9999rem;
+      }
     }
 
     .ui {
+      // border-width: 1px 1px 0 0;
+      border-style: solid;
+      border-color: black;
+
       &:hover {
         svg path {
           // fill: blue;
         }
       }
+
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        width: 16rem;
+        height: 7rem;
+        right: -1px;
+        top: -1px;
+        z-index: 999;
+        border-style: solid;
+        border-color: black;
+        border-width: 0 0 1px 1px;
+        border-bottom-left-radius: 9999rem;
+      }
     }
 
     .canvas {
+      // border-width: 1px 0 0 1px;
+      border-style: solid;
+      border-color: black;
+
       &:hover {}
+
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        width: 16rem;
+        height: 7rem;
+        left: -1px;
+        top: -1px;
+        z-index: 999;
+        border-style: solid;
+        border-color: black;
+        border-width: 0 1px 1px 0;
+        border-bottom-right-radius: 9999rem;
+      }
     }
   }
 }
